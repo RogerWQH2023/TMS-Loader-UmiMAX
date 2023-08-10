@@ -1,7 +1,62 @@
-.pageBlock {
-  box-sizing: border-box;
-  border: 10px solid black;
+@keyframes loading-color-change {
+  0% {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
+  20% {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
+  80% {
+    background-color: rgb(155, 155, 155);
+    color: rgb(155, 155, 155);
+  }
+  100% {
+    background-color: rgb(155, 155, 155);
+    color: rgb(155, 155, 155);
+  }
+}
+.loadingbox {
   border-radius: 30px;
-  height:100%;
-  margin: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  bottom: 50px;
+  left: 50px;
+  font-size: 50px;
+  font-weight: 900;
+  animation-name: loading-color-change;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.pageContainer {
+  //position: absolute;
+  //display: flex;
+  width: 100%;
+  height: 100vh;
+}
+.fullCard {
+  //position: absolute;
+  //display: flex;
+  padding: 0 20px 10px 10px;
+  width: 100%;
+  height: 87vh;
+}
+.viewerCard {
+  overflow: hidden;
+  margin-left: 5px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+.activeLayerCard{ 
+  //overflow: hidden;
+  height: 100%;
+  width: 100%;
+  padding: 0;
 }
