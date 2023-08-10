@@ -13,9 +13,16 @@ const Guide: React.FC<Props> = (props) => {
     <Layout>
       <Row>
         <Typography.Title level={3} className={styles.title}>
-          HELLO WORLD
+          <p>
+            Made By <strong>WQH</strong> with <strong>{name}</strong> ！
+          </p>
           <br />
-          前端学习小组小作业 By <strong>WQH</strong> with <strong>{name}</strong> ！
+          <div className={styles.picBall}>
+            <img
+              className={styles.pic}
+              src="https://avatars.githubusercontent.com/u/140324071?s=400&u=be20bf52259b3b4a92a745f1177cba29b49628b6&v=4"
+            ></img>
+          </div>
         </Typography.Title>
       </Row>
     </Layout>
