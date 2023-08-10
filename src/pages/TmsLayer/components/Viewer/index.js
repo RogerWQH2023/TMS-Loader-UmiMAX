@@ -6,6 +6,21 @@ const Viewer = (props) => {
   const divRef = useRef(null);
 
   const [viewer, setViewer] = useState(null);
+
+  //切换图层
+  const changeLayer = async () => {
+    await viewer?.imageryLayers.addImageryProvider(
+      new Cesium.TileMapServiceImageryProvider({
+        url: props.activeLayer.url,
+        tilingScheme: new Cesium.GeographicTilingScheme(),
+      }),
+    );
+    if (viewer?.imageryLayers.length > 2) {
+      viewer?.imageryLayers.remove(viewer?.imageryLayers.get(0), true);
+    }
+    console.log(viewer?.imageryLayers);
+  };
+
   useEffect(() => {
     if (!viewer) {
       setViewer(
@@ -21,13 +36,7 @@ const Viewer = (props) => {
       );
     }
     //更新图层
-    viewer?.imageryLayers.removeAll(true);
-    viewer?.imageryLayers.addImageryProvider(
-      new Cesium.TileMapServiceImageryProvider({
-        url: props.activeLayer.url,
-        tilingScheme: new Cesium.GeographicTilingScheme(),
-      }),
-    );
+    changeLayer();
   }, [viewer, props.activeLayer]);
 
   return <div ref={divRef} className={styles.viewer}></div>;
