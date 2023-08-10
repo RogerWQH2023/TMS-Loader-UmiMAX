@@ -1,6 +1,7 @@
 import { PageContainer, ProCard } from '@ant-design/pro-components';
 import { Button, Drawer } from 'antd';
 import { useEffect, useState } from 'react';
+import LayerCard from './components/LayerCard';
 import LayerPickerPro from './components/LayerPickerPro';
 import Viewer from './components/Viewer';
 import styles from './index.less';
@@ -22,7 +23,7 @@ const TmsLayer = () => {
 
   const activeLayerOnChange = (layer) => {
     setActiveLayer(layer);
-  }
+  };
 
   //读取数据
   useEffect(() => {
@@ -97,13 +98,10 @@ const TmsLayer = () => {
           headerBordered
           className={styles.activeLayerCard}
         >
-          <ProCard
-            type="inner"
-            title="Card1"
-            extra="provided by DDE"
-            bordered={true}
-            className={styles.layerCard}
-          ></ProCard>
+          <LayerCard
+            //key={activeLayer.uid}
+            layer={activeLayer}
+          />
         </ProCard>
         <ProCard ghost colSpan="70%" className={styles.viewerCard} bordered>
           <Viewer key="viewer" activeLayer={activeLayer} />
@@ -117,7 +115,10 @@ const TmsLayer = () => {
         open={open}
         //getContainer={false}
       >
-        <LayerPickerPro layers={layers} activeLayerOnChange={activeLayerOnChange}/>
+        <LayerPickerPro
+          layers={layers}
+          activeLayerOnChange={activeLayerOnChange}
+        />
       </Drawer>
     </PageContainer>
   );

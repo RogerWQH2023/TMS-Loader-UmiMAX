@@ -10,6 +10,7 @@ const LayerPickerPro = (props) => {
         key={layer.uid}
         layer={layer}
         activeLayerOnChange={props.activeLayerOnChange}
+        btn={true}
       />
     );
   });
