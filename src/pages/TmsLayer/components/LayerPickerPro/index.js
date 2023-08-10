@@ -1,58 +1,51 @@
 import { ProCard } from '@ant-design/pro-components';
-import { Pagination, Space, Button } from 'antd';
-import styles from './index.less';
+import { Pagination, Space } from 'antd';
 import { useState } from 'react';
-import LayerCard from '../LayerCard'
+import LayerCard from '../LayerCard';
+import styles from './index.less';
 
 const LayerPickerPro = (props) => {
   const [layerCardList, setLayerCardList] = useState();
   return (
     <ProCard ghost direction="column" className={styles.pickerContainer}>
       <ProCard direction="column" className={styles.layerCardContainer} ghost>
-      <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <LayerCard layer={props.layers[30]}  activeLayerOnChange={props.activeLayerOnChange}/>
-        <ProCard
-          type="inner"
-          title="Card2"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
-        <ProCard
-          type="inner"
-          title="Card3"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
-        <ProCard
-          type="inner"
-          title="Card4"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
-        <ProCard
-          type="inner"
-          title="Card5"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
-        <ProCard
-          type="inner"
-          title="Card6"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
-        <ProCard
-          type="inner"
-          title="Card7"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
-        <ProCard
-          type="inner"
-          title="Card8"
-          bordered={true}
-          className={styles.layerCard}
-        ></ProCard>
+        <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+          <LayerCard
+            layer={props.layers[0]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[1]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[2]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[3]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[4]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[5]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[6]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[7]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
+          <LayerCard
+            layer={props.layers[8]}
+            activeLayerOnChange={props.activeLayerOnChange}
+          />
         </Space>
       </ProCard>
       <br />
@@ -64,7 +57,6 @@ const LayerPickerPro = (props) => {
         />
         <br />
       </ProCard>
-      
     </ProCard>
   );
 };
