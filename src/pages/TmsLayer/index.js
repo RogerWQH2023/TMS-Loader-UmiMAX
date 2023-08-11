@@ -109,7 +109,7 @@ const TmsLayer = () => {
       </ProCard>
       <Drawer
         title="备选图层"
-        width={400}
+        width={480}
         placement="left"
         onClose={onClose}
         open={open}

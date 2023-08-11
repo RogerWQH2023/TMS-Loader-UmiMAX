@@ -1,10 +1,12 @@
 import { ProCard } from '@ant-design/pro-components';
 import { Pagination, Space } from 'antd';
+import { useState } from 'react';
 import LayerCard from '../LayerCard';
 import styles from './index.less';
 
 const LayerPickerPro = (props) => {
-  const layerCardList = props.layers.map((layer) => {
+  const [layerCardList, setLayerCardList] = useState(props.layers.slice(0, 10));
+  const layerCardDisplay = layerCardList.map((layer) => {
     return (
       <LayerCard
         key={layer.uid}
@@ -15,21 +17,26 @@ const LayerPickerPro = (props) => {
     );
   });
 
+  const pageChange = (page) => {
+    setLayerCardList(props.layers.slice(10 * (page - 1), 10 * page));
+  };
+
   return (
     <ProCard ghost direction="column" className={styles.pickerContainer}>
       <ProCard direction="column" className={styles.layerCardContainer} ghost>
         <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-          {layerCardList}
+          {layerCardDisplay}
         </Space>
       </ProCard>
-      <ProCard ghost className={styles.paginationCard}>
-        <Pagination
-          defaultCurrent={1}
-          total={50}
-          className={styles.Pagination}
-        />
-        <br />
-      </ProCard>
+      <Pagination
+        size="middle"
+        defaultCurrent={1}
+        total={props.layers.length}
+        pageSize={10}
+        showSizeChanger={false}
+        className={styles.pagination}
+        onChange={pageChange}
+      />
     </ProCard>
   );
 };

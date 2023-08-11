@@ -18,7 +18,7 @@ const Viewer = (props) => {
     if (viewer?.imageryLayers.length > 2) {
       viewer?.imageryLayers.remove(viewer?.imageryLayers.get(0), true);
     }
-    console.log(viewer?.imageryLayers);
+    console.log('当前活跃图层：' + viewer?.imageryLayers);
   };
 
   useEffect(() => {
