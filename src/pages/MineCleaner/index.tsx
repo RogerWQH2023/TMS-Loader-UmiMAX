@@ -192,7 +192,7 @@ const MineCleaner = () => {
   }, [renew]);
 
   useEffect(() => {
-    if (blockRemain + flagNum - mineNum === 0) {
+    if (hintStatus!=='success'&&blockRemain + flagNum - mineNum === 0) {
       for (let x = 0; x < size; x++) {
         for (let y = 0; y < size; y++) {
           if (tmpStatusList[x][y].isMine) {
@@ -203,6 +203,7 @@ const MineCleaner = () => {
           }
         }
       }
+      //setBlockRemain(99);
       setHintStatus('success');
       setTableStyle('bg-white border-4 border-green-100 rounded-sm p-1');
       setRenew(true);

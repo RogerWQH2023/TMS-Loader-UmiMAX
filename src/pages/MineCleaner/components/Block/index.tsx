@@ -106,8 +106,8 @@ const Block: React.FC<BlockProps> = ({
       );
     case 'mine-clear':
       return (
-        <div className="m-0.25 w-10 h-10 bg-green-100 shadow-md rounded-sm transition-all duration-1000">
-          <div className="m-0.25 w-10 h-10 bg-green-600 shadow-md rounded-sm transition-all duration-1000 animate-bounce"></div>
+        <div className="m-0.25 w-10 h-10 bg-green-100 shadow-md rounded-sm transition-all">
+          <div className="m-0.25 w-10 h-10 bg-green-600 shadow-md rounded-sm transition-all animate-bounce"></div>
         </div>
       );
   }
