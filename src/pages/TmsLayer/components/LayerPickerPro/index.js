@@ -1,7 +1,7 @@
 import { ProCard } from '@ant-design/pro-components';
 import { Pagination, Space } from 'antd';
 import { useState } from 'react';
-import LayerCard from '../LayerCard';
+import LayerCard from '@/pages/TmsLayer/components/LayerCard';
 import styles from './index.less';
 
 const LayerPickerPro = (props) => {

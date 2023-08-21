@@ -24,6 +24,11 @@ export default defineConfig({
       path: '/tmsloader',
       component: './TmsLayer',
     },
+    {
+      name: 'Mine Cleaner',
+      path: '/minecleaner',
+      component: './MineCleaner',
+    },
   ],
   npmClient: 'pnpm',
   //=================Cesium==================
