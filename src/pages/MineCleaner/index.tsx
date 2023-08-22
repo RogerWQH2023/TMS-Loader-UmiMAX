@@ -83,24 +83,22 @@ const MineCleaner = () => {
   }, [restart]);
 
   //当点击的方块周围全不是雷时拓展到八邻域。（深度优先）
-  function expandBlocks(x: number, y: number, exCount: number): number {
-    let count: number = exCount;
+  function expandBlocks(x: number, y: number): number {
+    let count: number = 0;
     if (tmpStatusList[x][y].inputStatus !== 'normal') {
       return count;
     } else {
       tmpStatusList[x][y].inputStatus = 'clicked';
       if (tmpStatusList[x][y].count === 0) {
-        if (y > 0) count = count + expandBlocks(x, y - 1, 0);
-        if (x > 0) count = count + expandBlocks(x - 1, y, 0);
-        if (x < size - 1) count = count + expandBlocks(x + 1, y, 0);
-        if (y < size - 1) count = count + expandBlocks(x, y + 1, 0);
-        if (x > 0 && y > 0) count = count + expandBlocks(x - 1, y - 1, 0);
-        if (x < size - 1 && y > 0)
-          count = count + expandBlocks(x + 1, y - 1, 0);
-        if (x > 0 && y < size - 1)
-          count = count + expandBlocks(x - 1, y + 1, 0);
+        if (y > 0) count = count + expandBlocks(x, y - 1);
+        if (x > 0) count = count + expandBlocks(x - 1, y);
+        if (x < size - 1) count = count + expandBlocks(x + 1, y);
+        if (y < size - 1) count = count + expandBlocks(x, y + 1);
+        if (x > 0 && y > 0) count = count + expandBlocks(x - 1, y - 1);
+        if (x < size - 1 && y > 0) count = count + expandBlocks(x + 1, y - 1);
+        if (x > 0 && y < size - 1) count = count + expandBlocks(x - 1, y + 1);
         if (x < size - 1 && y < size - 1)
-          count = count + expandBlocks(x + 1, y + 1, 0);
+          count = count + expandBlocks(x + 1, y + 1);
       }
       return count + 1;
     }
@@ -143,7 +141,7 @@ const MineCleaner = () => {
       setHintStatus('failed');
       setTableStyle('bg-slate-400 border-4 border-slate-600 rounded-sm p-1');
     }
-    setBlockRemain(blockRemain - expandBlocks(x, y, 0));
+    setBlockRemain(blockRemain - expandBlocks(x, y));
     setRenew(true);
   }
 
@@ -192,7 +190,7 @@ const MineCleaner = () => {
   }, [renew]);
 
   useEffect(() => {
-    if (hintStatus!=='success'&&blockRemain + flagNum - mineNum === 0) {
+    if (hintStatus !== 'success' && blockRemain + flagNum - mineNum === 0) {
       for (let x = 0; x < size; x++) {
         for (let y = 0; y < size; y++) {
           if (tmpStatusList[x][y].isMine) {
@@ -272,7 +270,7 @@ const MineCleaner = () => {
               <tbody>{_blockDisplay}</tbody>
             </table>
           </Space>
-          <Hint inputStatus={hintStatus}/>
+          <Hint inputStatus={hintStatus} />
         </Space>
       </div>
     </PageContainer>
